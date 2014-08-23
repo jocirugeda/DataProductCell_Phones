@@ -1,0 +1,79 @@
+
+
+<h2>Introduction</h2>
+
+This Data Product explore the relationship between:</br>
+<ul>
+<li>Cell Phone Subscriptions - By Country</li>
+<li>GDP Per Capita at PPP By Country</li>
+<li>Diferent country Regions ( Asia, Europe, etc )</li>
+</ul>
+
+
+The data comes from the web portal Quandl ( www.quandl,com ), we had to dowload data form two diferent Datasets:
+<ul>
+<li><a href="http://www.quandl.com/c/economics/gdp-per-capita-at-ppp-by-country">GDP Per Capita at PPP By Country</a></li>
+<li><a href="http://www.quandl.com/c/society/cell-phone-subscriptions-worldbank-by-country">Cell Phone Subscriptions - By Country</a></li>
+</ul>
+
+For download and process all the data , we create a Python script that uses MongoDB as data backend for processing.<br><br>
+
+<h2>The App dataset structure</h2>
+<ul>
+<li>ISO ,  standar code for the country</li>
+<li>year,  year of the related register</li>
+<li>country.name, descriptive name of the country ( extracted from ISO codes)</li>
+<li>region, diferent zones of countries ( the ones from  quandl datasets )</li>
+<li>Subscriptors.per100, number of Cell Subscribers per 100 Persons</li>
+<li>GPDperCapita, Per Capita GDP based on PPP Valuation, USD. Units: Current international dollar.</li>
+<li>years.with.network, computed value por each register 
+( year -  first.year with subscribers data +1 ) 
+this value shows how old is  the Cell network in that country/year)</li>
+</ul>
+
+
+
+<h2>Aplication Help:</h2>
+
+This App , have two diferent Tabs with information:</br>
+
+<h3>Explore Country Zones</h3>
+Input Controls:
+<ul>
+<li>Region, is used to choose which Countries zone we want to explore</li>
+<li>Plot type, this allow to choose which type of plot we want to see
+<ul>
+<li>Time Series, plot the whole history of data ( subscriptors by year)</li>
+<li>Country Networks,  this plots show the relationship between ( subscriptors by year with network) for the selected year</li>
+</ul>
+</li> 
+<li>Network in year, used to filter years for the Country Networks plot, also filters the table of countries at the right-botton</li>
+</ul>
+Output Controls:
+<ul>
+<li>Plot, in this zone is displayed the selected plot</li>
+<li>Summary, in this text-box is the output of the summary command of the data related to the plot that is above
+<ul> 
+<li>type Time Series the stats are for year 2012</li>
+<li>type Country Networks, the stats are for selected year</li>
+</ul>
+</li>
+<li>Table of Data, output of data filtered by year and Region</li>
+</ul>
+	
+
+
+<h3>Regresion Models</h3>
+
+Input Controls:
+<ul>
+<li>Region, is used to choose which Countries zone we want to explore</li>
+<li>Network from year, used to filter years for the regresion model (years>x)</li>
+</ul>
+Output Controls:
+<ul>
+<li>Plot, in this zone is displayed the Residuals diagnostic plots</li>
+<li>Summary, in this text-box is the output of the summary command of the computed model for the selected region filtered by year</li>
+</ul>
+
+
